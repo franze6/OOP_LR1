@@ -42,7 +42,7 @@ namespace OOP_LR1
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Задание №10";
+            this.label1.Text = "Задание №12";
             // 
             // button1
             // 
