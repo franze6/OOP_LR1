@@ -12,16 +12,25 @@ namespace OOP_LR1
 
         private void StartOperation()
         {
-            unsafe {
-                byte x = 2;
-                short y = 15;
-                long z = 545;
-                int w = 434;
+            this.textBox2.Clear();
+            string value = this.textBox1.Text;
+            if (value == string.Empty)
+                return;
 
-                this.dataGridView1.Rows.Add("Byte", $"{(int)&x:X}", $"{sizeof(byte)}");
-                this.dataGridView1.Rows.Add("Short", $"{(int)&y:X}", $"{sizeof(short)}");
-                this.dataGridView1.Rows.Add("Long", $"{(int)&z:X}", $"{sizeof(long)}");
-                this.dataGridView1.Rows.Add("Int", $"{(int)&w:X}", $"{sizeof(int)}");
+            try
+            {
+                int number = int.Parse(value);
+                if (number <= 31 || number >= 127)
+                {
+                    this.textBox2.Text = "Символа нет";
+                    return;
+                }
+
+                this.textBox2.Text += (char)number;
+            }
+            catch
+            {
+                this.textBox2.Text = "Ошибка";
             }
         }
 
