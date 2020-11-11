@@ -12,19 +12,16 @@ namespace OOP_LR1
 
         private void StartOperation()
         {
-            this.textBox2.Clear();
-            string value = this.textBox1.Text;
+            unsafe {
+                byte x = 2;
+                short y = 15;
+                long z = 545;
+                int w = 434;
 
-            if (value == String.Empty)
-                return;
-
-            try
-            {
-                this.textBox2.Text = Convert.ToInt32(value, 16).ToString();
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.Message);
+                this.dataGridView1.Rows.Add("Byte", $"{(int)&x:X}", $"{sizeof(byte)}");
+                this.dataGridView1.Rows.Add("Short", $"{(int)&y:X}", $"{sizeof(short)}");
+                this.dataGridView1.Rows.Add("Long", $"{(int)&z:X}", $"{sizeof(long)}");
+                this.dataGridView1.Rows.Add("Int", $"{(int)&w:X}", $"{sizeof(int)}");
             }
         }
 
