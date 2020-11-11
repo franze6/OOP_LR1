@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Collections.Generic;
 
 namespace OOP_LR1
 {
@@ -14,7 +15,8 @@ namespace OOP_LR1
 
         private void StartOperation()
         {
-            double a, b;
+            int a, b;
+            List<int> list = new List<int>();
             FileStream fs = File.OpenRead(@"C:\Users\solda\source\repos\OOP_LR1\OOP_LR1\file.txt");
             using(StreamReader sr = new StreamReader(fs))
             {
@@ -23,24 +25,23 @@ namespace OOP_LR1
                     string[] line = sr.ReadLine().Split(' ');
                     if (line.Length < 2)
                         continue;
-                    a = double.Parse(line[0]);
-                    b = double.Parse(line[1]);
-                    this.listBox1.Items.Add($"Re={a} Im={b}");
+                    a = int.Parse(line[0]);
+                    b = int.Parse(line[1]);
+                    list.Add(a);
+                    list.Add(b);
                 }
             }
 
             fs.Close();
 
-            fs = File.OpenWrite(@"C:\Users\solda\source\repos\OOP_LR1\OOP_LR1\Result.txt");
-            using(StreamWriter sw = new StreamWriter(fs))
+            int max = list[0];
+
+            for(int i =0; i < 5; i++)
             {
-                foreach(var item in this.listBox1.Items)
-                {
-                    sw.WriteLine(item.ToString());
-                }
+                if (list[i] > max) max = list[i];
             }
 
-            fs.Close();
+            MessageBox.Show($"Максимальный элемент: {max}");
         }
 
         private void button2_Click(object sender, EventArgs e)
