@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace OOP_LR1
@@ -13,33 +14,18 @@ namespace OOP_LR1
         private void StartOperation()
         {
             string value = this.textBox1.Text;
-            this.listBox1.Items.Clear();
-            if (value == string.Empty)
-                return;
-
-            try
+            foreach (var (item,i) in value.Select((item, i)=>(item, i)))
             {
-                int number = int.Parse(value);
-
-                if (number < 1)
+                if (!char.IsLetterOrDigit(item) && !char.IsWhiteSpace(item))
+                {
+                    this.Result.Text = "Неправильная строка";
+                    this.textBox1.Focus();
+                    this.textBox1.SelectionStart = i;
+                    this.textBox1.SelectionLength = 1;
                     return;
-                for(int i = 2; i <= number/2; i++)
-                {
-                    if(number % i == 0)
-                    {
-                        this.listBox1.Items.Add(i);
-                    }
-                }
-                
-                if (this.listBox1.Items.Count == 0)
-                {
-                    MessageBox.Show("Исходное число - простое");
                 }
             }
-            catch
-            {
-                MessageBox.Show("Ошибка");
-            }
+            this.Result.Text = "Правильная строка";
         }
 
         private void button2_Click(object sender, EventArgs e)
