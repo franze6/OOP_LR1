@@ -20,13 +20,16 @@ namespace OOP_LR1
             try
             {
                 int number = int.Parse(value);
-                if (number <= 31 || number >= 127)
+                if (number >= 127)
                 {
                     this.textBox2.Text = "Символа нет";
                     return;
                 }
-
-                this.textBox2.Text += (char)number;
+                
+                this.textBox2.Text += char.IsDigit((char)number) ? "Цифра" : 
+                    char.IsLower((char)number) ? "Строчная буква" : 
+                    char.IsUpper((char)number) ? "Прописная буква" :
+                    char.IsControl((char)number) ? "Управляющий символ" : "Другой символ";
             }
             catch
             {

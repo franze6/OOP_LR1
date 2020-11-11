@@ -46,7 +46,7 @@ namespace OOP_LR1
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Задание №4";
+            this.label1.Text = "Задание №5";
             // 
             // button1
             // 
@@ -73,7 +73,7 @@ namespace OOP_LR1
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(318, 118);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(148, 26);
+            this.textBox1.Size = new System.Drawing.Size(245, 26);
             this.textBox1.TabIndex = 3;
             // 
             // textBox2
@@ -82,7 +82,7 @@ namespace OOP_LR1
             this.textBox2.Location = new System.Drawing.Point(318, 150);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(148, 26);
+            this.textBox2.Size = new System.Drawing.Size(245, 26);
             this.textBox2.TabIndex = 4;
             // 
             // label2
