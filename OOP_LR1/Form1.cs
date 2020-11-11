@@ -14,8 +14,7 @@ namespace OOP_LR1
 
         private void StartOperation()
         {
-            int a, b;
-            int s = 0;
+            double a, b;
             FileStream fs = File.OpenRead(@"C:\Users\solda\source\repos\OOP_LR1\OOP_LR1\file.txt");
             using(StreamReader sr = new StreamReader(fs))
             {
@@ -24,13 +23,24 @@ namespace OOP_LR1
                     string[] line = sr.ReadLine().Split(' ');
                     if (line.Length < 2)
                         continue;
-                    a = int.Parse(line[0]);
-                    b = int.Parse(line[1]);
-                    if (a > 0 && b > 0)
-                        s++;
+                    a = double.Parse(line[0]);
+                    b = double.Parse(line[1]);
+                    this.listBox1.Items.Add($"Re={a} Im={b}");
                 }
             }
-            MessageBox.Show($"Оба числа были больше нуля {s} раз(а)");
+
+            fs.Close();
+
+            fs = File.OpenWrite(@"C:\Users\solda\source\repos\OOP_LR1\OOP_LR1\Result.txt");
+            using(StreamWriter sw = new StreamWriter(fs))
+            {
+                foreach(var item in this.listBox1.Items)
+                {
+                    sw.WriteLine(item.ToString());
+                }
+            }
+
+            fs.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
