@@ -12,28 +12,33 @@ namespace OOP_LR1
 
         private void StartOperation()
         {
-            this.textBox2.Clear();
             string value = this.textBox1.Text;
+            this.listBox1.Items.Clear();
             if (value == string.Empty)
                 return;
 
             try
             {
                 int number = int.Parse(value);
-                if (number >= 127)
-                {
-                    this.textBox2.Text = "Символа нет";
+
+                if (number < 1)
                     return;
+                for(int i = 2; i <= number/2; i++)
+                {
+                    if(number % i == 0)
+                    {
+                        this.listBox1.Items.Add(i);
+                    }
                 }
                 
-                this.textBox2.Text += char.IsDigit((char)number) ? "Цифра" : 
-                    char.IsLower((char)number) ? "Строчная буква" : 
-                    char.IsUpper((char)number) ? "Прописная буква" :
-                    char.IsControl((char)number) ? "Управляющий символ" : "Другой символ";
+                if (this.listBox1.Items.Count == 0)
+                {
+                    MessageBox.Show("Исходное число - простое");
+                }
             }
             catch
             {
-                this.textBox2.Text = "Ошибка";
+                MessageBox.Show("Ошибка");
             }
         }
 
