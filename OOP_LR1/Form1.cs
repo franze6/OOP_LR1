@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OOP_LR1
@@ -19,10 +12,19 @@ namespace OOP_LR1
 
         private void StartOperation()
         {
-            this.textBox1.Clear();
-            for(int i = 32; i < 127; i++)
+            this.textBox2.Clear();
+            string value = this.textBox1.Text;
+
+            if (value == String.Empty)
+                return;
+
+            try
             {
-                this.textBox1.Text += (char)i;
+                this.textBox2.Text = Convert.ToInt32(value, 16).ToString();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
 
